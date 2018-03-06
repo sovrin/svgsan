@@ -168,8 +168,13 @@ const sanitize = async (config) => {
                 : run([source], config)
             ;
         })
-        .catch((e) => log(e))
+        .catch((e) => {
+            log(e);
+            process.exit(1);
+        })
     ;
+
+    process.exit(0);
 };
 
 module.exports = {
