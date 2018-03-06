@@ -156,7 +156,7 @@ const sanitize = async (config) => {
 
     isFolder(source)
         .then(state => {
-            (state)
+           return (state)
                 // its either a folder
                 ? list(source)
                     .then(files => files.filter(
@@ -168,13 +168,15 @@ const sanitize = async (config) => {
                 : run([source], config)
             ;
         })
+        .then(() =>
+            // we're done here
+            process.exit(0)
+        )
         .catch((e) => {
             log(e);
             process.exit(1);
         })
     ;
-
-    process.exit(0);
 };
 
 module.exports = {
