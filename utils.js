@@ -68,7 +68,7 @@ const promisify = util.promisify;
  */
 const read = async (path) => (
     promisify(fs.readFile)(path, 'utf8')
-        .then((data) => data)
+        .then(data => data)
 );
 
 
@@ -81,7 +81,7 @@ const read = async (path) => (
 const write = async (path, data) => (
     promisify(fs.writeFile)(path, data, 'utf8')
         .then(() => true)
-        .catch((err) => err)
+        .catch(err => err)
 );
 
 /**

@@ -155,15 +155,15 @@ const sanitize = async (config) => {
     }
 
     isFolder(source)
-        .then((state) => {
+        .then(state => {
             (state)
                 // its either a folder
                 ? list(source)
-                    .then((files) => files.filter(
-                        (entry) => extensionname(entry) === '.svg'),
+                    .then(files => files.filter(
+                        entry => extensionname(entry) === '.svg'),
                     )
                     .then(files => files.map(e => `${source}\\${e}`))
-                    .then((files) => run(files, config))
+                    .then(files => run(files, config))
                 // or a single file
                 : run([source], config)
             ;
